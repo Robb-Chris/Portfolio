@@ -10,13 +10,13 @@
 		.p3 { fill: rgba(0,0,0,0.075); }
 		.p4 { fill: rgba(0,0,0,0.1); }
     ]]></style>
-	<polygon class="p-4" points="-1125,0 -375,1000 125,1000 -875,0" />
-	<polygon class="p-3" points="-875,0 125,1000 375,1000 -625,0" />
-	<polygon class="p-2" points="-625,0 375,1000 625,1000 -375,0" />
-	<polygon class="p-1" points="-375,0 625,1000 875,1000 -125,0" />
-	<polygon class="p0" points="-125,0 875,1000 1125,1000 125,0" />
-	<polygon class="p1" points="125,0 1125,1000 1375,1000 375,0" />
-	<polygon class="p2" points="375,0 1375,1000 1625,1000 625,0" />
-	<polygon class="p3" points="625,0 1625,1000 1875,1000 875,0" />
-	<polygon class="p4" points="875,0 1875,1000 2125,1000 1125,0" />
+	<polygon class="p-4" points="1125,0 -375,1000 125,1000 -875,0" />
+	<polygon class="p-3" points="875,0 125,1000 375,1000 -625,0" />
+	<polygon class="p-2" points="625,0 375,1000 625,1000 -375,0" />
+	<polygon class="p-1" points="375,0 625,1000 875,1000 -125,0" />
+	<polygon class="p0" points="125,0 875,1000 1125,1000 125,0" />
+	<polygon class="p1" points="-125,0 1125,1000 1375,1000 375,0" />
+	<polygon class="p2" points="-375,0 1375,1000 1625,1000 625,0" />
+	<polygon class="p3" points="-625,0 1625,1000 1875,1000 875,0" />
+	<polygon class="p4" points="-875,0 1875,1000 2125,1000 1125,0" />
 </svg>
