@@ -1,202 +1,531 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
 
-<html>
-	<head>
-		<title>Chris Robb - Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css"/>
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Chris Robb – Senior AI Engineer</title>
+	<meta name="description"
+		content="Chris Robb – Senior AI Engineer at Just Eat Takeaway.com. MSc Data Science (Cum Laude). GCP, Agentic AI, ML Fraud Detection." />
+	<link rel="stylesheet" href="style.css" />
+	<link rel="icon" type="image/png" href="images/profilepics.png" />
+	<script>
+		(function () {
+			const savedTheme = localStorage.getItem('theme');
+			const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+			if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
+				document.documentElement.setAttribute('data-theme', 'light');
+			} else {
+				document.documentElement.setAttribute('data-theme', 'dark');
+			}
+		})();
+	</script>
+</head>
 
-		<!-- Header -->
-			<section id="header">
-				<div class="inner">
-					<span class="icon solid major fa-code"></span>
-					<h1><strong>Programming Portfolio</strong></h1>
-					<p>by Chris Robb</p>
-					<ul class="actions special">
-						<li><a href="#one" class="button scrolly">About Me</a></li>
-						<li><a href="#two" class="button scrolly">Expertise</a></li>
-						<li><a href="#three" class="button scrolly">Projects</a></li>
-					</ul>
+<body>
+
+	<!-- Top-left theme control -->
+	<div class="top-left-ctrl">
+		<button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark theme">
+			<svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+				<circle cx="12" cy="12" r="5" />
+				<path
+					d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+			</svg>
+			<svg class="icon-moon" style="display:none;" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+				stroke-width="2">
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+			</svg>
+			<span class="theme-label">Light Mode</span>
+		</button>
+	</div>
+
+	<!-- Top-right quick links -->
+	<div class="top-links">
+		<a href="https://www.linkedin.com/in/chrisirobb/" target="_blank" rel="noopener" class="top-link">
+			<svg fill="currentColor" viewBox="0 0 24 24">
+				<path
+					d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2v-8.37H6.46M7.83 6.88a1.68 1.68 0 0 0-1.68 1.68c0 .93.75 1.68 1.68 1.68s1.68-.75 1.68-1.68-.75-1.68-1.68-1.68Z" />
+			</svg>
+			<span>LinkedIn</span>
+		</a>
+		<a href="https://github.com/Robb-Chris" target="_blank" rel="noopener" class="top-link">
+			<svg fill="currentColor" viewBox="0 0 24 24">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+			</svg>
+			<span>GitHub</span>
+		</a>
+	</div>
+
+	<!-- Right-side navigation with labels -->
+	<nav class="side-nav" id="side-nav">
+		<a href="#hero"><span class="nav-label">Home</span><span class="nav-dot"></span></a>
+		<a href="#experience"><span class="nav-label">Experience</span><span class="nav-dot"></span></a>
+		<a href="#projects"><span class="nav-label">Projects</span><span class="nav-dot"></span></a>
+	</nav>
+
+	<!-- ===== HERO – SCORECARD ===== -->
+	<section class="hero" id="hero">
+		<div class="container">
+			<div class="hero-layout">
+				<div>
+					<h1 class="hero-name">Chris Robb</h1>
+					<p class="hero-role"><strong>Senior AI Engineer</strong> at Just Eat Takeaway.com</p>
+
+					<div class="scorecard">
+						<span class="chip"><span class="chip-dot"></span>MSc Data Science – Cum Laude</span>
+						<span class="chip"><span class="chip-dot"></span>AI Ambassador @ JET</span>
+					</div>
 				</div>
-			</section>
 
-		<!-- About Me -->
-			<section id="one" class="main style1">
-				<div class="container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<header class="major">
-								<h2>About Me</h2>
-							</header>
-							<p>I am Chris Robb, currently a Data Science Master's student at Tilburg University, The Netherlands. I graduated from Saxion University with a 
-							   bachelor's degree in International Business Management in 2019/20 and proceeded to work as a Project Manager / Data Analyst for 3 years. 
-							   Having found my passion for Data-oriented programming, I decided to pursue a Master's Degree in Data Science to broaden my programming, analytical and 
-							   statistical knowledge.
-							</p>
-						</div>
-						<div class="col-6 col-12-medium imp-medium">
-							<span class="image fit"><img src="images/profilepicl.png" srcset="images/profilepics.png 500w, images/profilepicm.png 1000w, images/profilepicl.png 1500w," alt="" /></span>
+				<div class="hero-photo">
+					<div class="photo-ring">
+						<div class="photo-inner">
+							<img src="images/profilepicl.png"
+								srcset="images/profilepics.png 500w, images/profilepicm.png 1000w, images/profilepicl.png 1500w"
+								alt="Chris Robb" />
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 
-		<!-- Expertise -->
-			<section id="two" class="main style2">
-				<div class="container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<ul class="major-icons">
-								<li><span class="icon solid style1 major fa-code"></span></li>
-								<li><span class="icon solid style2 major fa-flask"></span></li>
-								<li><span class="icon solid style3 major fa-database"></span></li>
-								<li><span class="icon solid style4 major fa-image"></span></li>
-							</ul>
+	<!-- ===== EXPERIENCE – Split roles ===== -->
+	<section id="experience">
+		<div class="container">
+			<div class="sec-head">
+				<span class="sec-tag">Experience</span>
+				<h2 class="sec-title">Career Timeline</h2>
+			</div>
+
+			<div class="timeline">
+
+				<!-- JET -->
+				<div class="tl-group">
+					<div class="tl-company">
+						<img src="images/logo-jet.png" alt="Just Eat Takeaway.com" class="tl-company-logo" />
+						<img src="images/logo-prosus.png" alt="Prosus" class="tl-company-logo" style="height:36px" />
+						<span class="tl-company-name">Just Eat Takeaway.com</span>
+					</div>
+
+					<!-- Senior AI Engineer -->
+					<div class="tl-role current">
+						<div class="tl-node"></div>
+						<div class="glass tl-card">
+							<div class="tl-top">
+								<h3 class="tl-title">Senior AI Engineer</h3>
+								<span class="tl-date">Jun 2026 – Present</span>
+							</div>
+							<div class="tl-body">
+								<ul>
+									<li>Architecting <strong>agentic AI workflows (GCP, ADK, BigQuery)</strong> to drive
+										an AI-First Finance transformation across global operations</li>
+									<li>Facilitating the <strong>Prosus AI Multipliers Bootcamp</strong> and mentoring
+										AI & Data roles globally</li>
+									<li>Leading C-suite AI bootcamps and enterprise hackathons in collaboration with
+										<strong>Prosus (Toqan platform)</strong>
+									</li>
+								</ul>
+								<div class="tl-tags">
+									<span class="tl-tag">GCP</span>
+									<span class="tl-tag">ADK</span>
+									<span class="tl-tag">Agentic AI</span>
+									<span class="tl-tag">Toqan</span>
+								</div>
+							</div>
 						</div>
-						<div class="col-6 col-12-xlarge">
-							<header class="major">
-								<h2>Expertise</h2>
-							</header>
-							<p>Having over 5 years of coding experience at work and in my personal time, I have explored several different areas: </p> 
-							<p>
-							<ul>
-							   <li>Web-oriented languages from HTML over PHP to Javascript</li>
-							   <li>Hardware and embedded systems with C# and some C++</li>
-							   <li>Data-oriented programming in Python and R</li>
-							   <li>Databases and Query languages such as SQL, NoSQL with MongoDB, Azure, and SAP</li>
-							   <li>Extensive working experience with Power BI and Qlik for Data Analytics as well as Power Automate and VBA automation</li>
-							</ul></p>
-							<p>
-							With my recent endeavour in Data Science and Engineering, I have broadened my Python knowledge in areas of Machine Learning and Image Analysis.
-							In my 'Project Overview' below some of my bigger projects in those areas are highlighted and explained in more detail.
-							</p>
+					</div>
+
+					<!-- Senior Data Analyst -->
+					<div class="tl-role">
+						<div class="tl-node"></div>
+						<div class="glass tl-card">
+							<div class="tl-top">
+								<h3 class="tl-title">Senior Data Analyst</h3>
+								<span class="tl-date">Nov 2025 – Jun 2026</span>
+							</div>
+							<div class="tl-body">
+								<ul>
+									<li>Built a statistical financial model for accrued expenses, delivering
+										<strong>€2.8M in annual cost savings</strong>
+									</li>
+									<li>Acting Data Lead for <strong>5 data analysts</strong>, driving alignment and
+										technical roadmap of financial data</li>
+									<li>Architected the enterprise <strong>BigQuery AP datamart</strong>, establishing a
+										scalable single-source-of-truth</li>
+									<li>Implemented data-driven net cash reconciliation for <strong>300M+ annual
+											delivery orders</strong>, ensuring 100% financial compliance</li>
+								</ul>
+								<div class="tl-tags">
+									<span class="tl-tag">BigQuery</span>
+									<span class="tl-tag">Python</span>
+									<span class="tl-tag">Statistical Modeling</span>
+									<span class="tl-tag">GCP</span>
+									<span class="tl-tag">dbt</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Data Analyst -->
+					<div class="tl-role">
+						<div class="tl-node"></div>
+						<div class="glass tl-card">
+							<div class="tl-top">
+								<h3 class="tl-title">Data Analyst</h3>
+								<span class="tl-date">May 2024 – Oct 2025</span>
+							</div>
+							<div class="tl-body">
+								<ul>
+									<li><strong>Product Owner</strong> of the AP data analytics platform (<strong>GCP,
+											dbt, Looker</strong>) for <strong>1,500+ users</strong>, cutting reporting
+										lag from <strong>~5 days to Day 1</strong></li>
+									<li>Deployed semi-supervised <strong>ML fraud detection models</strong> monitoring
+										<strong>€1.4B+ annual spend</strong>, identifying <strong>€250k+ in internal
+											fraud</strong>
+									</li>
+									<li>Founded and led an AI & Data upskilling program for <strong>150+ Finance Ops
+											staff</strong> across 5+ practical workshops</li>
+								</ul>
+								<div class="tl-tags">
+									<span class="tl-tag">ML / Fraud Detection</span>
+									<span class="tl-tag">Looker</span>
+									<span class="tl-tag">Workday</span>
+									<span class="tl-tag">SQL</span>
+									<span class="tl-tag">Python</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</section>
 
-		<!-- Projects -->
-			<section id="three" class="main style1 special">
-				<div class="container">
-					<header class="major">
-						<h2>Project Overview</h2>
-					</header>
-					<p>Showcase of noteworthy projects</p>
-					<div class="row gtr-150">
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="images/pic02l.jpg" srcset="images/pic02s.jpg 500w, images/pic02m.jpg 1000w, images/pic02l.jpg 1500w," alt="" /></span>
-							<h3>Binary Classification</h3>
-							<p>Given a large set of imbalanced transactional data, the goal of this university project was to identify suitable ML algorithms for the task. Algorithms used were kNN, Random Forest, Logistic Regression, and  Support Vector Machine.</p>
-							<ul class="icons">
-								<li><a href="https://github.com/Robb-Chris/Binary-Classification" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-							</ul>
-							<!-- <ul class="actions special">
-								<li><a class="button">
-									<div class="popup">More
-										<span class="popuptext"><h5>
-											<p>More information in text and pictures coming soon.</p>
-											<p>Feel free to check out the project itself via the GitHub Link.</p>
-										</h5></span>
-									</div>
-								</a></li>
-							</ul> -->
+				<!-- Agilent -->
+				<div class="tl-group">
+					<div class="tl-company">
+						<img src="images/logo-agilent.png" alt="Agilent Technologies" class="tl-company-logo" />
+						<span class="tl-company-name">Agilent Technologies</span>
+					</div>
+
+					<!-- PM -->
+					<div class="tl-role">
+						<div class="tl-node"></div>
+						<div class="glass tl-card">
+							<div class="tl-top">
+								<h3 class="tl-title">Project Manager – Data Analytics</h3>
+								<span class="tl-date">Jun 2020 – Jul 2022</span>
+							</div>
+							<div class="tl-body">
+								<ul>
+									<li><strong>EMEA Development Lead</strong> for the global Repair-Service Management
+										System, streamlining software and logistics workflows</li>
+									<li>Built automated self-service analytics pipelines (<strong>Power BI, Azure,
+											Python, SQL</strong>) for real-time enterprise KPI tracking</li>
+									<li>Mentored and supervised Computer Science and Business Studies thesis students
+										and technical interns</li>
+								</ul>
+								<div class="tl-tags">
+									<span class="tl-tag">Power BI</span>
+									<span class="tl-tag">Azure</span>
+									<span class="tl-tag">Python</span>
+									<span class="tl-tag">SQL</span>
+								</div>
+							</div>
 						</div>
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="images/pic03l.jpg" srcset="images/pic03s.jpg 500w, images/pic03m.jpg 1000w, images/pic03l.jpg 1500w," alt="" /></span>
-							<h3>Blood Vessel Extraction</h3>
-							<p>Image analysis of blood vessel images in the spatial domain through morphological processing and segmentation. The accuracy was measured using the
-								 Dice score and other tools. Lastly, the branch length, orientation and thickness were measured to give further insights into the vessels.
-							</p>
-							<ul class="icons">
-								<li><a href="https://github.com/Robb-Chris/Blood-Vessel-Extraction" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-							</ul>
-							<!-- <ul class="actions special">
-								<li><a class="button">
-									<div class="popup">More
-										<span class="popuptext"><h5>
-											<p>More information in text and pictures coming soon.</p>
-											<p>Feel free to check out the project itself via the GitHub Link.</p>
-										</h5></span>
-									</div>
-								</a></li>
-							</ul> -->
-						</div>
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="images/pic04l.jpg" srcset="images/pic04s.jpg 500w, images/pic04m.jpg 1000w, images/pic04l.jpg 1500w," alt="" /></span>
-							<h3>Vaccum Cleaning Bot</h3>
-							<p>Unsupervised pathfinding by using simple mathematical operations only and no use of any external modules (Base Python only). Additionally, memory-based exploration was used to further improve cost functions of next steps.</p>
-							<ul class="icons">
-								<li><a href="https://github.com/Robb-Chris/Roomba" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-							</ul>
-							<!-- <ul class="actions special">
-								<li><a class="button">
-									<div class="popup">More
-										<span class="popuptext"><h5>
-											<p>More information in text and pictures coming soon.</p>
-											<p>Feel free to check out the project itself via the GitHub Link.</p>
-										</h5></span>
-									</div>
-								</a></li>
-							</ul> -->
+					</div>
+
+					<!-- QE -->
+					<div class="tl-role">
+						<div class="tl-node"></div>
+						<div class="glass tl-card">
+							<div class="tl-top">
+								<h3 class="tl-title">Quality Engineer</h3>
+								<span class="tl-date">Oct 2019 – May 2020</span>
+							</div>
+							<div class="tl-body">
+								<ul>
+									<li><strong>Project Lead</strong> for the ACT Eco-Label Audit across HPLC instrument
+										systems</li>
+									<li>Designed standardized sustainability audit frameworks adopted organization-wide
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-			</section>
 
-		<!-- Four -->
-			<section id="four" class="main style2 special">
-				<div class="container">
-					<header class="major">
-						<h2>Interested in what I do?</h2><br>
-						<p>You can contact me via</p>
-					</header>
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/chrisirobb/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="https://github.com/Robb-Chris" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="mailto:chrisrobb42+portfolio@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
+				<!-- AQ Services -->
+				<div class="tl-group">
+					<div class="tl-company">
+						<span class="tl-company-name">AQ Services International · The Hague</span>
+					</div>
+					<div class="tl-role">
+						<div class="tl-node"></div>
+						<div class="glass tl-card">
+							<div class="tl-top">
+								<h3 class="tl-title">Fieldwork Specialist & Project Assistant</h3>
+								<span class="tl-date">Feb – Aug 2018</span>
+							</div>
+							<div class="tl-body">
+								<ul>
+									<li>Managed international market research audits across <strong>6+ EMEA and UAE
+											countries</strong></li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
-			</section>
 
+				<!-- Reha Südwest -->
+				<div class="tl-group">
+					<div class="tl-company">
+						<span class="tl-company-name">Reha Südwest · Karlsruhe, Germany</span>
+					</div>
+					<div class="tl-role">
+						<div class="tl-node"></div>
+						<div class="glass tl-card">
+							<div class="tl-top">
+								<h3 class="tl-title">Voluntary Civil Service</h3>
+								<span class="tl-date">Sep 2011 – Aug 2012</span>
+							</div>
+							<div class="tl-body">
+								<ul>
+									<li>Assisted in care and rehabilitation services for individuals with disabilities
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 
-		<!-- Footer -->
-			<section id="footer">
-				<ul class="copyright">
-					<li>&copy; Chris Robb</li>
-					<!-- Design Template by HTML5 UP -->
-				</ul>
-			</section>
+				<!-- Education -->
+				<div class="tl-edu">
+					<h3>Education</h3>
+					<div class="edu-grid">
+						<div class="glass edu-item">
+							<img src="images/logo-tilburg.png" alt="Tilburg University" class="edu-logo" />
+							<strong>MSc Data Science – Cum Laude</strong>
+							<span>Tilburg University</span>
+						</div>
+						<div class="glass edu-item">
+							<strong>BBA International Business Management</strong>
+							<span>Saxion University of Applied Sciences</span>
+						</div>
+						<div class="glass edu-item">
+							<strong>Computer Science</strong>
+							<span>Hannover University of Applied Sciences</span>
+						</div>
+						<div class="glass edu-item">
+							<strong>Fachabitur & Media Design</strong>
+							<span>Akademie für Kommunikation Mannheim</span>
+						</div>
+					</div>
+				</div>
 
-		<!-- Scripts -->
-			<script>
-			const popups = [...document.getElementsByClassName('popup')];
+			</div>
+		</div>
+	</section>
 
-			window.addEventListener('click', ({ target }) => {
-			const popup = target.closest('.popup');
-			const clickedOnClosedPopup = popup && !popup.classList.contains('show');
-			
-			popups.forEach(p => p.classList.remove('show'));
-			
-			if (clickedOnClosedPopup) popup.classList.add('show');  
+	<!-- ===== PROJECTS ===== -->
+	<section id="projects">
+		<div class="container">
+			<div class="sec-head">
+				<span class="sec-tag">Projects</span>
+				<h2 class="sec-title">Selected Work</h2>
+			</div>
+
+			<div class="projects-grid">
+
+				<!-- AP Framework -->
+				<div class="glass proj">
+					<div class="proj-icon-area" style="background:linear-gradient(135deg,#0d1b2a,#1b2838)">
+						<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#4285F4" stroke-width="1.2">
+							<path
+								d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+							<polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+							<line x1="12" y1="22.08" x2="12" y2="12" />
+						</svg>
+						<span class="proj-badge">Enterprise</span>
+					</div>
+					<div class="proj-body">
+						<h3>AP Data Framework</h3>
+						<p>Self-service analytics platform for 1,500+ users across spending, payment, and expense
+							reporting at JET.</p>
+						<div class="proj-foot">
+							<div class="proj-tech"><span>BigQuery</span><span>Python</span></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Fraud -->
+				<div class="glass proj">
+					<div class="proj-icon-area" style="background:linear-gradient(135deg,#1a0a2e,#16213e)">
+						<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"
+							stroke-opacity="0.5">
+							<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+							<path d="m9 12 2 2 4-4" />
+						</svg>
+						<span class="proj-badge">ML</span>
+					</div>
+					<div class="proj-body">
+						<h3>ML Fraud Detection</h3>
+						<p>Semi-supervised anomaly detection monitoring €1.4bn+ spend, identifying €250k+ in internal
+							fraud.</p>
+						<div class="proj-foot">
+							<div class="proj-tech"><span>Semi-Supervised ML</span><span>Python</span></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Blood Vessel -->
+				<div class="glass proj">
+					<div class="proj-img">
+						<img src="images/pic03l.jpg"
+							srcset="images/pic03s.jpg 500w, images/pic03m.jpg 1000w, images/pic03l.jpg 1500w"
+							alt="Blood Vessel Extraction" />
+						<span class="proj-badge">Computer Vision</span>
+					</div>
+					<div class="proj-body">
+						<h3>Blood Vessel Extraction</h3>
+						<p>Morphological image processing and segmentation with Dice score evaluation for clinical
+							vessel analysis.</p>
+						<div class="proj-foot">
+							<div class="proj-tech"><span>Python</span><span>OpenCV</span></div>
+							<a href="https://github.com/Robb-Chris/Blood-Vessel-Extraction" target="_blank"
+								rel="noopener" class="proj-link">GitHub →</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Roomba -->
+				<div class="glass proj">
+					<div class="proj-img">
+						<img src="images/pic04l.jpg"
+							srcset="images/pic04s.jpg 500w, images/pic04m.jpg 1000w, images/pic04l.jpg 1500w"
+							alt="Vacuum Cleaning Bot" />
+						<span class="proj-badge">Algorithms</span>
+					</div>
+					<div class="proj-body">
+						<h3>Autonomous Pathfinding Bot</h3>
+						<p>Memory-based unsupervised exploration in pure Python — no external libraries.</p>
+						<div class="proj-foot">
+							<div class="proj-tech"><span>Python</span><span>Pathfinding</span></div>
+							<a href="https://github.com/Robb-Chris/Roomba" target="_blank" rel="noopener"
+								class="proj-link">GitHub →</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Binary Classification -->
+				<div class="glass proj">
+					<div class="proj-img">
+						<img src="images/pic02l.jpg"
+							srcset="images/pic02s.jpg 500w, images/pic02m.jpg 1000w, images/pic02l.jpg 1500w"
+							alt="Binary Classification" />
+						<span class="proj-badge">ML</span>
+					</div>
+					<div class="proj-body">
+						<h3>Imbalanced Classification</h3>
+						<p>Benchmarked kNN, Random Forest, Logistic Regression, and SVM on highly imbalanced
+							transactional data.</p>
+						<div class="proj-foot">
+							<div class="proj-tech"><span>Scikit-Learn</span><span>SVM</span></div>
+							<a href="https://github.com/Robb-Chris/Binary-Classification" target="_blank" rel="noopener"
+								class="proj-link">GitHub →</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<p>&copy;
+				<script>document.write(new Date().getFullYear())</script> Chris Robb
+			</p>
+		</div>
+	</footer>
+
+	<!-- Gravity Mesh -->
+	<script src="gravity.js"></script>
+
+	<!-- Nav highlight on scroll -->
+	<script>
+			(function () {
+				const dots = document.querySelectorAll('.side-nav a');
+				const sections = document.querySelectorAll('section[id]');
+
+				function update() {
+					const y = window.scrollY + window.innerHeight * 0.35;
+					let active = 0;
+					sections.forEach((s, i) => { if (y >= s.offsetTop) active = i; });
+					dots.forEach((d, i) => d.classList.toggle('active', i === active));
+				}
+
+				window.addEventListener('scroll', update, { passive: true });
+				update();
+			})();
+	</script>
+
+	<!-- Theme toggle script -->
+	<script>
+		(function () {
+			const btn = document.getElementById('theme-toggle');
+			if (!btn) return;
+			const sun = btn.querySelector('.icon-sun');
+			const moon = btn.querySelector('.icon-moon');
+			const label = btn.querySelector('.theme-label');
+
+			function updateBtn(theme) {
+				if (theme === 'light') {
+					sun.style.display = 'none';
+					moon.style.display = 'inline-block';
+					label.textContent = 'Dark Mode';
+				} else {
+					sun.style.display = 'inline-block';
+					moon.style.display = 'none';
+					label.textContent = 'Light Mode';
+				}
+			}
+
+			const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+			updateBtn(currentTheme);
+
+			btn.addEventListener('click', () => {
+				const t = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+				document.documentElement.setAttribute('data-theme', t);
+				localStorage.setItem('theme', t);
+				updateBtn(t);
+				window.dispatchEvent(new Event('themechange'));
 			});
+		})();
+	</script>
 
-			</script>
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Automatic Timeline Year Indication Script -->
+	<script>
+		(function () {
+			let lastYear = null;
+			document.querySelectorAll('.tl-role').forEach(role => {
+				const dateEl = role.querySelector('.tl-date');
+				if (!dateEl) return;
+				const match = dateEl.textContent.match(/\b(20\d\d|19\d\d)\b/);
+				if (match) {
+					const year = match[1];
+					if (year !== lastYear) {
+						const yearEl = document.createElement('span');
+						yearEl.className = 'tl-year';
+						yearEl.textContent = year;
+						role.appendChild(yearEl);
+						lastYear = year;
+					}
+				}
+			});
+		})();
+	</script>
 
-	</body>
+</body>
+
 </html>
-
-<!--
-	Photon by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
