@@ -73,6 +73,7 @@ img{max-width:100%;height:auto;display:block}
 
 /* Container */
 .container{
+    width:100%;
     max-width:1120px;
     margin:0 auto;
     padding:0 28px;
@@ -449,14 +450,14 @@ section{
     width:auto;
     max-width:200px;
     object-fit:contain;
-    filter:brightness(0) invert(1);
-    opacity:.9;
+    filter:none;
+    opacity:1;
 }
 
 /* Logos with transparency on non-white BG need different filter */
 .tl-company-logo.logo-preserve{
-    filter:brightness(1.2) saturate(0.2);
-    opacity:.8;
+    filter:none;
+    opacity:1;
 }
 
 .tl-company-name{
@@ -608,15 +609,15 @@ section{
     width:auto;
     max-width:180px;
     object-fit:contain;
-    filter:brightness(0) invert(1);
-    opacity:.9;
+    filter:none;
+    opacity:1;
     margin-bottom:10px;
 }
 
 [data-theme="light"] .tl-company-logo,
 [data-theme="light"] .edu-logo{
-    filter:brightness(0);
-    opacity:0.85;
+    filter:none;
+    opacity:1;
 }
 
 /* ==========================================================================
