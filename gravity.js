@@ -2,10 +2,13 @@
  * Gravity Mesh – Dot-grid that only appears near the cursor
  * Inner dots near cursor center are vibrant blue (#4285F4), fading to white at outer edge.
  * Grid lines and dots are invisible except in the cursor's vicinity.
- * Content elements get a noticeable parallax push from the cursor.
+ * Content elements get a noticeable parallax push from the cursor (desktop only).
  */
 
 (() => {
+    // Detect touch-primary devices — disable parallax to prevent jitter
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
     const canvas = document.createElement('canvas');
     canvas.id = 'gravity-canvas';
     Object.assign(canvas.style, {
@@ -25,7 +28,7 @@
     const spacing = 95;
     const dotBase = 2.4;
 
-    // Mouse
+    // Mouse / touch position
     const mouse = { x: -9999, y: -9999, active: false };
     const GRAVITY_RADIUS = 520;      // deeper gravity warp zone
     const GRAVITY_STRENGTH = 92;     // deeper pull
@@ -34,10 +37,17 @@
     let points = [];
     let stars = [];
 
+    // Use a stable viewport height (avoids constant canvas rebuilds from mobile URL-bar resize)
+    let stableH = window.innerHeight;
+
     function resize() {
         dpr = window.devicePixelRatio || 1;
         W = window.innerWidth;
-        H = window.innerHeight;
+        // On touch devices, anchor height to avoid rebuild on mobile chrome bar show/hide
+        if (!isTouchDevice || Math.abs(window.innerHeight - stableH) > 150) {
+            stableH = window.innerHeight;
+        }
+        H = isTouchDevice ? stableH : window.innerHeight;
         canvas.width = W * dpr;
         canvas.height = H * dpr;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -83,25 +93,49 @@
         }
     }
 
-    // Pointer tracking
+    // Pointer tracking – pointermove fires for both mouse and touch
     window.addEventListener('pointermove', e => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
         mouse.active = true;
-        applyContentParallax(e.clientX, e.clientY);
-    });
-    window.addEventListener('pointerleave', () => {
-        mouse.active = false;
-        mouse.x = -9999;
-        mouse.y = -9999;
-        resetContentParallax();
+        if (!isTouchDevice) {
+            applyContentParallax(e.clientX, e.clientY);
+        }
     });
 
-    // ===== Content parallax =====
+    // Only reset on true pointer-leave (mouse leaving window) — ignore touch pointerleave
+    window.addEventListener('pointerleave', e => {
+        if (e.pointerType === 'mouse') {
+            mouse.active = false;
+            mouse.x = -9999;
+            mouse.y = -9999;
+            resetContentParallax();
+        }
+    });
+
+    // On touch end, smoothly fade back instead of snapping
+    window.addEventListener('pointerup', e => {
+        if (e.pointerType === 'touch') {
+            // Gradually move mouse position off-screen so gravity fades naturally
+            let steps = 0;
+            const fade = setInterval(() => {
+                steps++;
+                if (steps > 20) {
+                    clearInterval(fade);
+                    mouse.active = false;
+                    mouse.x = -9999;
+                    mouse.y = -9999;
+                }
+            }, 50);
+        }
+    });
+
+    // ===== Content parallax (desktop only) =====
     let parallaxEls = [];
     let parallaxRaf = null;
 
     function gatherParallaxElements() {
+        if (isTouchDevice) return; // no parallax on touch
         parallaxEls = document.querySelectorAll('.glass, .chip, .btn, .sec-head, .edu-item, .tl-card, .hero-photo, .photo-ring, .photo-inner, .scorecard, .tl-company-logo, h1, h2, h3, p');
     }
 
@@ -110,6 +144,7 @@
     window.addEventListener('load', () => setTimeout(gatherParallaxElements, 500));
 
     function applyContentParallax(mx, my) {
+        if (isTouchDevice) return;
         if (parallaxEls.length === 0) gatherParallaxElements();
         if (parallaxRaf) return; // throttle
 
