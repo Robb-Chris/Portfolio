@@ -76,37 +76,27 @@
     // 'mouse' is the logical gravity centre for both desktop and mobile
     const mouse = { x: -9999, y: -9999, active: false };
 
-    if (isTouch) {
-        /* ── Mobile: scroll-driven position ──────────────────────── */
-        // Centre X fixed; Y glides from ~20 % to ~80 % of viewport as you scroll
+    // Mobile scroll-driven state (module-scoped)
+    let targetY = 0;
+    function updateScrollPos() {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress   = scrollable > 0 ? window.scrollY / scrollable : 0;
+        targetY = H * (0.2 + progress * 0.6);
+        mouse.x = W / 2;
+    }
+    function lerpMobile(dt) {
+        mouse.y += (targetY - mouse.y) * Math.min(1, 4 * dt);
+    }
+    // Called after resize() so W and H are valid
+    function initMobile() {
         mouse.active = true;
         mouse.x = W / 2;
-        mouse.y = H / 2;
-
-        // Target for smooth lerp
-        let targetY = H / 2;
-
-        function updateScrollPos() {
-            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-            const progress   = scrollable > 0 ? window.scrollY / scrollable : 0;
-            // Map 0→1 scroll to 20 %→80 % of viewport height
-            targetY  = H * (0.2 + progress * 0.6);
-            mouse.x  = W / 2;
-        }
-
-        window.addEventListener('scroll', updateScrollPos, { passive: true });
-        window.addEventListener('resize', () => {
-            mouse.x = W / 2;
-            updateScrollPos();
-        });
+        mouse.y = H * 0.5;
         updateScrollPos();
+    }
 
-        // Smooth lerp applied each frame (inside update())
-        function lerpMobile(dt) {
-            mouse.y += (targetY - mouse.y) * Math.min(1, 4 * dt);
-        }
-        // Expose so update() can call it
-        window._lerpMobile = lerpMobile;
+    if (isTouch) {
+        window.addEventListener('scroll', updateScrollPos, { passive: true });
 
     } else {
         /* ── Desktop: cursor-driven position ─────────────────────── */
@@ -175,7 +165,7 @@
     /* ── Update ───────────────────────────────────────────────────── */
     function update(dt) {
         // Smooth mobile lerp
-        if (isTouch && window._lerpMobile) window._lerpMobile(dt);
+        if (isTouch) lerpMobile(dt);
 
         for (let i = 0; i < points.length; i++) {
             const p = points[i];
@@ -319,7 +309,12 @@
         requestAnimationFrame(raf);
     }
 
-    window.addEventListener('resize', () => { resize(); gatherParallaxElements(); });
+    window.addEventListener('resize', () => {
+        resize();
+        if (isTouch) initMobile();
+        gatherParallaxElements();
+    });
     resize();
+    if (isTouch) initMobile();
     raf(performance.now());
 })();
